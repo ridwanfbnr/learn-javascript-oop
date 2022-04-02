@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property di Constructor Function</title>
+</head>
+<body>
+    
+    <script>
+
+        //  Property di Constructor Function
+        /*
+        -   sebenarnya setelah kita membuat object, kita bisa langsung menambahkan property
+            kedalam object tersebut dengan menggunakan nama variable lalu diikuti tanda titik
+            dan nama property nya
+        -   namun jika seperti itu, constructor function yang sudah kita buat tidak terlalu
+            berguna, karena property nya hanya ada di object yang kita tambahkan property nya
+        -   untuk menambahkan property didalam semua object yang dibuat dari constructor function,
+            kita bisa menggunakan kata kunci this lalu di ikuti dengan nama property nya
+        */
+       
+        function PersonMember() {
+            this.firstName = "default";
+            this.lastName = "";
+        }
+
+        const eko = new PersonMember();
+        eko.firstName =  "Eko";
+        eko.lastName = "Kurniawan";
+
+        const budi = new PersonMember();
+        budi.firstName = "Budi";
+        budi.lastName = "Paleto";
+
+
+        console.info(eko);
+        console.info(budi);
+
+    </script>
+    
+</body>
+</html>

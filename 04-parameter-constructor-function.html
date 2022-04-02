@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter di Constructor Function</title>
+</head>
+<body>
+
+    <script>
+
+        //  Parameter di Constructor Function
+        function PersonMember(firstName, lastName) {
+            // Property
+            this.firstName = firstName;
+            this.lastName = lastName;
+            //  Method
+            this.sayHello = function(name) {
+                console.info(`Hello ${name}, My Name is ${this.firstName} ${this.lastName}`);
+            }
+            this.sum = function(first, second) {
+                const total = first + second;
+                console.info(`Nilai Anda ${total}`);
+            }
+            this.sumLoop = function(nilai) {
+                for (nilai = 1; nilai < 5; nilai++) {
+                    console.info(`Perulangan Ke ${nilai}`);
+                }
+            }
+        }
+
+        const eko = new PersonMember("Ridwan", "Andi");
+        eko.sayHello("Joko");
+        eko.sum(60, 10);
+        eko.sumLoop()
+
+        const budi = new PersonMember("Budi", "Anto");
+        budi.sayHello("Bagas");
+        budi.sum(60, 20)
+        budi.sumLoop();
+
+
+        console.info(eko);
+        console.info(budi);
+
+    </script>
+    
+</body>
+</html>

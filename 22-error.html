@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+
+    <script>
+
+        /*
+            Error
+
+        -   Saat membuat aplikasi, suadh tentu kita tidak akan terhindar dari yang namanya error
+        -   Di JavaScript, Error merupakan sesuatu yang sudah standar
+        -   Banyak sekali class error di JavaScript, Namun semua class error di JavaScript selalu
+            berujung di class error, artinya class error adalah superclass untuk semua jenis error
+            di JavaScript
+        -   Contoh class error yang terdapat di JavaScript contoh nya SyntaxError, TypeError,
+            EvalError, dan lain-lain
+            
+            
+            Throw Error
+
+        -   Saat kita membuat instance object dari class Error, tidak lantas terjadi error
+        -   Kita perlu memberitahu program kita, bahwa kita akan mentrigger sebuah error terjadi,
+            atau istilahnya adalah melempar error (throw error)
+        -   Untuk melempar error, kita bisa gunakan kata kunci throw, diikuti dengan
+            instance object error nya
+        -   Jika terjadi error, maka otomatis kode program kita terhenti, dan kita bisa melihat
+            detail error nya di console aplikasi browser kita
+        */
+
+        //  Throw Error
+        class MathUtil {
+            static sum(...numbers) {
+
+                if (numbers.length === 0) {
+                    throw new Error("Total Parameter Harus Lebih Dari 0");
+                }
+
+
+                let total = 0;
+                for (const number of numbers) {
+                    total += number;
+                }
+                return total;
+            }
+        }
+
+        console.info(MathUtil.sum());
+
+        const result = MathUtil.sum(1, 2, 3, 4, 5);
+        console.info(result);
+
+    </script>
+    
+</body>
+</html>

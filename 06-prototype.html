@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+
+    <script>
+
+        function PersonMember(firstName, lastName) {
+            // Property
+            this.firstName = firstName;
+            this.lastName = lastName;
+            // Method
+            this.sayHello = function(name) {
+                console.info(`Hello ${name}, My Name is ${this.firstName} ${this.lastName}`);
+            }
+        }
+
+
+        //  Menambahkan Property ke Prototype
+        PersonMember.prototype.sayBye = function() {
+            console.info("Good Bye");
+        }
+
+        PersonMember.prototype.run = function() {
+            console.info(`${this.firstName} is Running`);
+        }
+        /*
+            jadi saat kita menambahkan method/property ke dalam prototype sebenarnya dia
+            menambahkan ke prototype bukan ke instance object nya
+
+            Cara Kerja Prototype Inheritance
+            -   Bagaimana bisa property di prototype diakses dari object instance?
+            -   Ketika kita mengakses property di object instance, pertama akan di cek apakah
+                di object tersebut terdapat property sayBye atau tidak, jika tidak, maka
+                akan dicek di __proto__ (prototype) nya, jika masih tidak ada, dicek lagi 
+                di __proto__ (prototype) yang lebih tinggi, begitu seterus nya sampai berakhir
+                di prototype object, jika tidak ada juga akan terjadi error
+            -   Nah apabila property sayBye tersebut terdapat di __proto__ (prototype) dan tidak
+                ada property apapun di object instance, baru yang diambil yang berada
+                di prototype tersebut
+            -   Dan apabila di object instance ada property baru yaitu sayByeBye dan di prototype
+                terdapat property sayBye juga, maka yang diambil adalah iya kedua property tersebut
+                karna berbeda nama property nya 
+            -   Kecuali nama property nya sama yaitu sayBye dan property sayBye tersebut
+                terdapat di instance object dan prototype dan yang membedakan adalah output nya
+                maka yang diambil ialah yang di instance object
+        */
+
+
+
+
+        // Object Instance
+        const eko = new PersonMember("Ridwan", "Andi");
+
+        // Menambahkan Property ke Instance Object  
+        eko.sayByeBye = function(name) {
+            console.info("Sampai Jumpa");
+        }
+        
+        /*
+            apabila kita menambahkan method/property ke Instance Object eko itu kita hanya
+            menambahkan ke instance object eko saja, instance object yang lain tidak ada.
+            nah bagaimana cara nya agar method/property yang baru dibuat dan bisa diakses
+            oleh semua instance object. cara nya kita tambahkan ke prototype nya agar
+            semua instance object bisa mengakses method/property tersebut
+        */
+
+        eko.sayBye("Bye");
+        eko.run("Running");
+        eko.sayByeBye("Say Bye Bye")
+
+        console.info(eko);
+
+
+
+        const budi = new PersonMember("Budi", "Anto");
+        budi.sayBye("Bye");
+        budi.run("Running");
+        
+        console.info(budi);
+
+    </script>
+    
+</body>
+</html>

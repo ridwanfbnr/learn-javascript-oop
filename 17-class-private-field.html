@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Private Field</title>
+</head>
+<body>
+
+    <script>
+
+        /*
+            Private Class Field
+
+        -   Secara default, saat kita menambahkan field, maka field tersebut bisa diakses
+            dari manapun
+        -   Jika kita ingin membuat field yang bersifat private (hanya bisa diakses di dalam class)
+            kita bisa menggunakan tanda # sebelum nama field nya
+        -   Ini dinamakan private class field, dan hanya bisa diakses dari dalam class saja
+        */
+
+        //  Class Private Field
+        class Counter {
+            #nilaiValue = 0;
+
+            penambahan() {
+                this.#nilaiValue++;
+            }
+
+            pengurangan() {
+                this.#nilaiValue--;
+            }
+
+            get result() {
+                return this.#nilaiValue;
+            }
+
+        }
+
+        const nilaiBudi = new Counter();
+
+        nilaiBudi.penambahan();
+        nilaiBudi.penambahan();
+        nilaiBudi.penambahan();
+        nilaiBudi.penambahan();
+        nilaiBudi.penambahan();
+        
+        console.info(nilaiBudi.result);
+        console.info(nilaiBudi);
+
+
+
+        const nilaiEko = new Counter(10);
+        
+        nilaiEko.pengurangan();
+        nilaiEko.pengurangan();
+        nilaiEko.pengurangan();
+        
+        console.info(nilaiEko.result);
+        
+        nilaiEko.counter = 100; // Hanya mengubah class Counter nya
+        
+        console.info(nilaiEko);
+
+
+    </script>
+    
+</body>
+</html>

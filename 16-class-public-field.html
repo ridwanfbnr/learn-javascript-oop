@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Public Field</title>
+</head>
+<body>
+
+    <script>
+
+        /*
+            Public Class Field
+
+        -   Biasanya, saat kita ingin menambahkan field (property yang berisi value),
+            kita biasanya tambahkan di constructor
+        -   Namun ada proposal di EcmaScript yang mengajukan pembuatan public class field
+            ditempatkan di luar constructor, selevel dengan penempatan method
+        -   github.com/tc39/proposal-class-fields
+        -   Dalam proposal tersebut juga disebutkan bahwa EcmaScript akan mendukung access modifier
+            public dan private
+        -   public artinya bisa diakses dari luar class, dan private hanya bisa diakses
+            dari dalam class saja
+        -   Untuk membuat public class field, kita bisa langsung buat nama field dengan value nya
+            selevel dengan method
+        -   Jika kita tidak memasukkan value ke dalam field tersebut, artinya tersebut memiliki
+            value undefined
+        */
+
+
+        //  Class Public Field
+        class Costumer {
+
+            firstName;
+            lastName;
+            balance = 0;
+
+            //  Mengakses atau Mengubah data nya via constructor
+            constructor(firstName, lastName, balance){
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.balance = balance;
+            }
+
+            //  atau Bisa menggunakan setter juga
+            set setFullName(name) {
+                const result = name.split(" ")
+                this.firstName = result[0];
+                this.lastName = result[1];
+                this.balance = result[2];
+            }
+        }
+
+        const eko = new Costumer();
+        console.info(eko);
+        
+        // via Setter
+        eko.setFullName = "Ridwan Febnur 999.999.999";
+        console.info(eko);
+
+
+        // via Constructor
+        const ekoKhannedy = new Costumer("Eko", "Khannedy", "999.999.999");
+        console.info(ekoKhannedy);
+
+
+
+
+    </script>
+    
+</body>
+</html>

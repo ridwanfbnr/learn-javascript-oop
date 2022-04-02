@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterable Dan Iterator</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+            Iterable dan Iterator
+
+        -   Salah satu fitur terbaru di ES6 adalah iterable
+        -   Iterable adalah spesial object yang memiliki standarisasi
+        -   Dengan mengikuti standarisasi iterable, secara otomatis kita bisa melakukan
+            iterasi terhadapt data tersebut dengan menggunakan perulangan for...of
+        -   Contoh yang sudah mengikuti standarisasi iterable adalah string Array, Object,
+            dan lain-lain
+        */
+
+        //  Membuat Counter Iterator Result
+        class CounterIteratorResult {
+            constructor(value, done) {
+                this.value = value;
+                this.done = done;
+            }
+        }
+
+        //  Membuat Counter Iterator
+        class CounterIterator {
+            constructor(value, max) {
+                this.value = value;
+                this.max = max;
+            }
+
+            next() {
+                try {
+                    if (this.value > this.max) {
+                        return new CounterIteratorResult(this.value, true);
+                    } else {
+                        return new CounterIteratorResult(this.value, false);
+                    }
+                } finally {
+                    this.value++;
+                }
+            }
+        }
+
+        //  Membuat Counter atau Counter Iterable
+        class Counter {
+            constructor(value, max) {
+                this.value = value;
+                this.max = max;
+            }
+
+            [Symbol.iterator]() {
+                return new CounterIterator(this.value, this.max);
+            }
+        }
+
+
+        //  Menggunakan Counter atau Counter Iterable
+        const counter = new Counter(1, 10);
+        for (const iterator of counter) {
+            console.info(iterator);
+        }
+
+    </script>
+    
+</body>
+</html>

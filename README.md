@@ -1,4 +1,4 @@
-# Learning Javascript Object Oriented Programming
+# Learning JavaScript Object Oriented Programming
 
 My Documentation Learning JavaScript Object Oriented Programming In Programmer Zaman Now
 
